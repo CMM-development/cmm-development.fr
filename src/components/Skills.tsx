@@ -45,9 +45,13 @@ export default function Skills() {
           {GROUPS.map((group) => (
             <div
               key={group.title}
-              className="bg-white border border-[var(--color-border)] rounded-lg p-6 hover:shadow-md transition-shadow"
+              className="group relative bg-white border border-[var(--color-border)] rounded-lg p-6 transition-all duration-300 hover:border-[var(--color-cyan)]/50 hover:shadow-lg hover:shadow-[var(--color-cyan)]/5 hover:-translate-y-0.5"
             >
-              <h3 className="font-semibold text-[var(--color-bg-dark)] text-sm uppercase tracking-wider mb-3">
+              <div
+                className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-[var(--color-cyan)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                aria-hidden
+              />
+              <h3 className="font-semibold text-[var(--color-bg-dark)] text-sm uppercase tracking-wider mb-3 group-hover:text-[var(--color-cyan-dark)] transition-colors">
                 {group.title}
               </h3>
               <ul className="space-y-1.5 text-sm text-[var(--color-text-muted)]">
