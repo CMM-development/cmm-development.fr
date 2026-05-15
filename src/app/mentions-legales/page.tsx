@@ -15,7 +15,7 @@ export default function MentionsLegales() {
   return (
     <>
       <Header />
-      <main className="flex-1 py-16 md:py-24">
+      <main id="main" className="flex-1 py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-6">
           <p className="text-[var(--color-cyan-dark)] uppercase tracking-widest text-xs font-semibold mb-3">
             Informations légales

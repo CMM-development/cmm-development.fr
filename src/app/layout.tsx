@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import StructuredData from "@/components/StructuredData";
+import BackToTop from "@/components/BackToTop";
 import "./globals.css";
 
 const inter = Inter({
@@ -74,8 +76,16 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans" suppressHydrationWarning>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-[var(--color-cyan-dark)] focus:text-white focus:px-4 focus:py-2 focus:rounded"
+        >
+          Aller au contenu
+        </a>
         {children}
+        <BackToTop />
         <Analytics />
+        <StructuredData />
       </body>
     </html>
   );
