@@ -1,8 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
-import type { Case } from "@/data/cases";
+import { useEffect, useRef, useState } from "react";
+import type { Case, CaseImage } from "@/data/cases";
+import BrowserFrame from "./BrowserFrame";
+import PhoneFrame from "./PhoneFrame";
+import Lightbox from "./Lightbox";
+
+function isMobileShot(img: CaseImage) {
+  return img.height > img.width;
+}
 
 type Props = {
   case_: Case | null;
@@ -11,6 +18,7 @@ type Props = {
 
 export default function CaseModal({ case_, onClose }: Props) {
   const dialogRef = useRef<HTMLDivElement>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const isOpen = case_ !== null;
 
   useEffect(() => {
@@ -197,24 +205,57 @@ export default function CaseModal({ case_, onClose }: Props) {
           {case_.gallery && case_.gallery.length > 1 && (
             <div className="mt-8">
               <h3 className="text-xs uppercase tracking-wider font-semibold text-[var(--color-text-meta)] mb-4">
-                Captures
+                Captures{" "}
+                <span className="ml-2 text-[var(--color-text-meta)]/60 normal-case tracking-normal">
+                  · clic pour agrandir
+                </span>
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {case_.gallery.map((img) => (
-                  <div
-                    key={img.src}
-                    className="relative aspect-[4/3] w-full overflow-hidden rounded-md border border-[var(--color-border)] bg-[var(--color-bg-soft)]"
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      width={img.width}
-                      height={img.height}
-                      className="object-cover object-top w-full h-full"
-                      sizes="(max-width: 640px) 100vw, 50vw"
-                    />
-                  </div>
-                ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+                {case_.gallery.map((img, idx) => {
+                  const sharedButtonClasses =
+                    "block group cursor-zoom-in transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:ring-offset-2 rounded";
+                  return isMobileShot(img) ? (
+                    <button
+                      key={img.src}
+                      type="button"
+                      onClick={() => setLightboxIndex(idx)}
+                      aria-label={`Agrandir : ${img.alt}`}
+                      className={`${sharedButtonClasses} flex justify-center`}
+                    >
+                      <PhoneFrame className="max-w-[200px]">
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          width={img.width}
+                          height={img.height}
+                          className="w-full h-auto"
+                          sizes="200px"
+                        />
+                      </PhoneFrame>
+                    </button>
+                  ) : (
+                    <button
+                      key={img.src}
+                      type="button"
+                      onClick={() => setLightboxIndex(idx)}
+                      aria-label={`Agrandir : ${img.alt}`}
+                      className={sharedButtonClasses}
+                    >
+                      <BrowserFrame url={case_.url?.replace(/^https?:\/\//, "") || "cmm-development.fr"}>
+                        <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--color-bg-soft)]">
+                          <Image
+                            src={img.src}
+                            alt={img.alt}
+                            width={img.width}
+                            height={img.height}
+                            className="object-cover object-top w-full h-full"
+                            sizes="(max-width: 640px) 100vw, 50vw"
+                          />
+                        </div>
+                      </BrowserFrame>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -234,6 +275,16 @@ export default function CaseModal({ case_, onClose }: Props) {
           </div>
         </div>
       </div>
+
+      {/* Lightbox pour la gallery */}
+      {case_.gallery && case_.gallery.length > 0 && (
+        <Lightbox
+          images={case_.gallery}
+          activeIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onChange={setLightboxIndex}
+        />
+      )}
     </div>
   );
 }

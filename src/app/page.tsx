@@ -6,6 +6,7 @@ import CaseGrid from "@/components/CaseGrid";
 import Recommendations from "@/components/Recommendations";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Reveal from "@/components/Reveal";
 
 export default function Home() {
   return (
@@ -13,10 +14,18 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <About />
-        <Skills />
-        <CaseGrid />
-        <Recommendations />
+        <Reveal>
+          <About />
+        </Reveal>
+        <Reveal>
+          <Skills />
+        </Reveal>
+        <Reveal>
+          <CaseGrid />
+        </Reveal>
+        <Reveal>
+          <Recommendations />
+        </Reveal>
         <Contact />
       </main>
       <Footer />
