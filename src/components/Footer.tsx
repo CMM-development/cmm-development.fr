@@ -8,9 +8,9 @@ export default function Footer() {
           <Image
             src="/logo-cmm-icon.png"
             alt=""
-            width={48}
-            height={48}
-            className="h-12 w-auto object-contain shrink-0"
+            width={212}
+            height={298}
+            className="h-16 w-auto object-contain shrink-0"
           />
           <div>
             <p className="font-bold text-[var(--color-bg-dark)]">

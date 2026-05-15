@@ -12,19 +12,19 @@ const NAV = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[var(--color-border)]">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link
           href="/"
-          className="flex items-center gap-2.5 group"
+          className="flex items-center gap-3 group"
           aria-label="CMM Development — Accueil"
         >
           <Image
             src="/logo-cmm-icon.png"
             alt=""
-            width={36}
-            height={36}
+            width={212}
+            height={298}
             priority
-            className="h-9 w-auto object-contain transition-transform group-hover:scale-105"
+            className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
           />
           <span className="font-bold text-lg text-[var(--color-bg-dark)] tracking-tight hidden sm:inline">
             CMM<span className="text-[var(--color-cyan-dark)]">.</span>Development
