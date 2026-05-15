@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ===== Palette CMM Development ===== */
+  --color-cyan: #14e5e5;
+  --color-cyan-dark: #0fb8b8;
+  --color-cyan-soft: rgba(20, 229, 229, 0.15);
+
+  --color-bg-dark: #0a0e27;
+  --color-bg-mid: #131838;
+  --color-bg-soft: #f4f6f9;
+
+  --color-text-default: #1a202c;
+  --color-text-muted: #4a5568;
+  --color-text-meta: #6b7280;
+
+  --color-border: #e2e8f0;
+
+  /* ===== Fonts ===== */
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background: white;
+    color: var(--color-text-default);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  /* Sections one-page : padding vertical confortable + scroll-margin pour les ancres */
+  section[id] {
+    scroll-margin-top: 4rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* ===== Mockup frames (BrowserFrame / PhoneFrame) ===== */
+
+  .browser-frame {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -20px rgba(10, 14, 39, 0.25), 0 8px 20px -8px rgba(10, 14, 39, 0.15);
+    background: white;
+    border: 1px solid var(--color-border);
+  }
+
+  .browser-frame__bar {
+    height: 28px;
+    background: linear-gradient(to bottom, #f4f6f9, #e2e8f0);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 6px;
+    position: relative;
+  }
+
+  .browser-frame__dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+
+  .browser-frame__dot--red {
+    background: #ff5f57;
+  }
+
+  .browser-frame__dot--yellow {
+    background: #febc2e;
+  }
+
+  .browser-frame__dot--green {
+    background: #28c840;
+  }
+
+  .browser-frame__url {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 4px;
+    padding: 2px 12px;
+    font-size: 11px;
+    color: var(--color-text-meta);
+    font-family: var(--font-mono);
+    border: 1px solid var(--color-border);
+    max-width: 60%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .phone-frame {
+    position: relative;
+    border-radius: 40px;
+    background: #0a0e27;
+    padding: 12px 8px;
+    box-shadow: 0 24px 60px -20px rgba(10, 14, 39, 0.35);
+    width: fit-content;
+  }
+
+  .phone-frame__notch {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 18px;
+    background: #0a0e27;
+    border-radius: 12px;
+    z-index: 2;
+  }
+
+  .phone-frame__screen {
+    border-radius: 30px;
+    overflow: hidden;
+    background: white;
+  }
 }
