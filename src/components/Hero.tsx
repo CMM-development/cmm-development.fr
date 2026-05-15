@@ -9,6 +9,30 @@ export default function Hero() {
         }}
         aria-hidden
       />
+      {/* Motif PCB subtil — cohérence avec le logo */}
+      <svg
+        className="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none"
+        aria-hidden
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        <defs>
+          <pattern id="pcb" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+            <path
+              d="M10 0 L10 60 L50 60 L50 120 M70 0 L70 30 L110 30 L110 80 L60 80"
+              fill="none"
+              stroke="#14E5E5"
+              strokeWidth="1"
+            />
+            <circle cx="10" cy="60" r="2.5" fill="#14E5E5" />
+            <circle cx="50" cy="60" r="2.5" fill="#14E5E5" />
+            <circle cx="70" cy="30" r="2.5" fill="#14E5E5" />
+            <circle cx="110" cy="80" r="2.5" fill="#14E5E5" />
+            <circle cx="60" cy="80" r="2.5" fill="#14E5E5" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#pcb)" />
+      </svg>
       <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
         <div className="inline-flex items-center gap-2 mb-7 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 text-xs font-medium">
           <span className="relative flex h-2 w-2">
