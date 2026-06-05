@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
+import { createPortal } from "react-dom";
 import type { CaseImage } from "@/data/cases";
 
 type Props = {
@@ -14,6 +15,9 @@ type Props = {
 export default function Lightbox({ images, activeIndex, onClose, onChange }: Props) {
   const isOpen = activeIndex !== null;
   const current = isOpen ? images[activeIndex] : null;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   const prev = useCallback(() => {
     if (activeIndex === null) return;
@@ -37,9 +41,9 @@ export default function Lightbox({ images, activeIndex, onClose, onChange }: Pro
     return () => document.removeEventListener("keydown", onKey);
   }, [isOpen, onClose, prev, next]);
 
-  if (!current || activeIndex === null) return null;
+  if (!current || activeIndex === null || !mounted) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[60] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 sm:p-8"
       onClick={onClose}
@@ -119,6 +123,7 @@ export default function Lightbox({ images, activeIndex, onClose, onChange }: Pro
           )}
         </p>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
