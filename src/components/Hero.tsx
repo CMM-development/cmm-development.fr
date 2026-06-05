@@ -68,8 +68,8 @@ export default function Hero() {
         </div>
         <div className="mt-12 pt-6 border-t border-white/10 max-w-2xl">
           <p className="text-sm text-white/60 italic">
-            Évolution actuelle vers l&apos;automatisation de services en entreprise — un axe naturel
-            pour un profil fullstack.
+            Évolution actuelle vers l&apos;automatisation de processus et l&apos;intégration d&apos;IA
+            au service des PME — un axe naturel pour un profil fullstack.
           </p>
         </div>
       </div>

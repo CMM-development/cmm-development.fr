@@ -21,6 +21,12 @@ export default function About() {
             document de prérequis, périmètre précis, critères de recette explicites. Cette approche
             protège le client comme le prestataire, et a été validée par les retours clients.
           </p>
+          <p>
+            J&apos;oriente aujourd&apos;hui cette expérience vers l&apos;automatisation des processus
+            et l&apos;intégration d&apos;IA dans les PME : extraction de documents, tâches répétitives
+            de back-office, outils métier connectés à l&apos;existant. Pas un produit standard à
+            louer — votre outil, conçu sur mesure et intégré à votre façon de travailler.
+          </p>
           <p className="border-l-4 border-[var(--color-cyan)] pl-4 italic text-[var(--color-text-default)]">
             Je ne livre pas des rapports. Je livre des systèmes qui fonctionnent.
           </p>

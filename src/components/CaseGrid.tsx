@@ -15,7 +15,7 @@ export default function CaseGrid() {
           Réalisations
         </p>
         <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-bg-dark)] tracking-tight max-w-2xl">
-          Quatre projets qui résument 15 ans.
+          Des projets qui résument 15 ans.
         </h2>
         <p className="mt-4 text-[var(--color-text-muted)] max-w-2xl">
           Missions freelance récentes et expériences longues — du dev from scratch au logiciel
