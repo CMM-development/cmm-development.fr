@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Case, CaseImage } from "@/data/cases";
 import BrowserFrame from "./BrowserFrame";
 import PhoneFrame from "./PhoneFrame";
@@ -19,7 +20,10 @@ type Props = {
 export default function CaseModal({ case_, onClose }: Props) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
   const isOpen = case_ !== null;
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -37,9 +41,9 @@ export default function CaseModal({ case_, onClose }: Props) {
     };
   }, [isOpen, onClose]);
 
-  if (!case_) return null;
+  if (!case_ || !mounted) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-bg-dark)]/70 backdrop-blur-sm p-4 sm:p-8 overflow-y-auto"
       onClick={onClose}
@@ -285,6 +289,7 @@ export default function CaseModal({ case_, onClose }: Props) {
           onChange={setLightboxIndex}
         />
       )}
-    </div>
+    </div>,
+    document.body,
   );
 }
