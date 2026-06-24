@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 const NAV = [
-  { href: "#about", label: "À propos" },
-  { href: "#cases", label: "Réalisations" },
-  { href: "#method", label: "Méthode" },
-  { href: "#recommendations", label: "Recommandations" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "À propos" },
+  { href: "/#cases", label: "Réalisations" },
+  { href: "/#method", label: "Méthode" },
+  { href: "/outils", label: "Outils & démos" },
+  { href: "/#recommendations", label: "Recommandations" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Header() {
@@ -42,7 +43,7 @@ export default function Header() {
           ))}
         </nav>
         <a
-          href="#contact"
+          href="/#contact"
           className="hidden sm:inline-flex px-4 py-2 rounded-md bg-[var(--color-cyan-dark)] text-white text-sm font-semibold hover:bg-[var(--color-cyan)] transition-colors"
         >
           Discutons

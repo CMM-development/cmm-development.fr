@@ -25,13 +25,16 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap gap-5 text-xs">
-          <a href="#about" className="hover:text-[var(--color-cyan-dark)] transition-colors">
+          <a href="/#about" className="hover:text-[var(--color-cyan-dark)] transition-colors">
             À propos
           </a>
-          <a href="#cases" className="hover:text-[var(--color-cyan-dark)] transition-colors">
+          <a href="/#cases" className="hover:text-[var(--color-cyan-dark)] transition-colors">
             Réalisations
           </a>
-          <a href="#contact" className="hover:text-[var(--color-cyan-dark)] transition-colors">
+          <a href="/outils" className="hover:text-[var(--color-cyan-dark)] transition-colors">
+            Outils &amp; démos
+          </a>
+          <a href="/#contact" className="hover:text-[var(--color-cyan-dark)] transition-colors">
             Contact
           </a>
           <a
