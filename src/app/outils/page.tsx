@@ -22,6 +22,14 @@ interface ToolCard {
 // Vitrine unifiée. Outils légers = routes internes ; démos lourdes = liens externes (sous-domaines).
 const TOOLS: ToolCard[] = [
   {
+    title: "Les assistants IA",
+    description:
+      "La flotte d'assistants que je construis pour vous — documents entrants, relances, devis, veille… déployés en instance dédiée, tracés et souverains.",
+    emoji: "🤖",
+    href: "/assistants",
+    status: "live",
+  },
+  {
     title: "Calculateur de ROI",
     description:
       "Estimez le temps et l'argent qu'une automatisation vous fait gagner, et son délai de rentabilité.",
