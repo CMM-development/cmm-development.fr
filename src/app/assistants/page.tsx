@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 const STATUS: Record<string, { label: string; cls: string }> = {
   live: { label: "Livré · pilote", cls: "text-emerald-300 border-emerald-400/30 bg-emerald-400/10" },
+  built: { label: "Disponible · démo", cls: "text-cyan-300 border-cyan-400/30 bg-cyan-400/10" },
   build: { label: "Top 3 · en construction", cls: "text-amber-300 border-amber-400/30 bg-amber-400/10" },
   cat: { label: "Catalogue · sur devis", cls: "text-white/60 border-white/15 bg-white/5" },
 };
