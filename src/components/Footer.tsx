@@ -31,9 +31,6 @@ export default function Footer() {
           <a href="/#cases" className="hover:text-[var(--color-cyan-dark)] transition-colors">
             Réalisations
           </a>
-          <a href="/outils" className="hover:text-[var(--color-cyan-dark)] transition-colors">
-            Outils &amp; démos
-          </a>
           <a href="/#contact" className="hover:text-[var(--color-cyan-dark)] transition-colors">
             Contact
           </a>
